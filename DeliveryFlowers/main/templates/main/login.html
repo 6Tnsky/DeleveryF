@@ -1,0 +1,23 @@
+{% extends 'main/layoute.html' %}
+
+{% block title %}
+<title>Вход</title>
+{% endblock %}
+
+{% block content %}
+<main style="padding: 20px; margin: 20px auto; max-width: 400px;">
+    <h4 style="text-align: center; color: #343a40; margin-bottom: 20px;">Вход</h4>
+
+    <form method="post" style="display: flex; flex-direction: column; gap: 15px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary" style="padding: 10px 15px; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: #007bff; color: #ffffff; border: none; cursor: pointer;">
+            Войти
+        </button>
+    </form>
+
+    <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+        Нет аккаунта? <a href="{% url 'register' %}" class="nav-link" style="color: #007bff; text-decoration: none;">Зарегистрироваться</a>
+    </p>
+</main>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% block title %}
+<title>Заказ успешно создан</title>
+{% endblock %}
+
+{% block content %}
+<main style="padding: 20px; margin: 20px auto; max-width: 600px;">
+    <h4 style="text-align: center; color: #343a40;">Ваш заказ успешно создан!</h4>
+
+    <p style="text-align: center; font-size: 1.1rem; color: #495057; margin-top: 15px;">
+        Номер заказа: <strong>{{ order.id }}</strong>
+    </p>
+
+    <p style="margin-top: 20px; font-size: 1.1rem; font-weight: bold; color: #343a40;">Продукты:</p>
+
+    <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+        {% for product in order.products.all %}
+            <li style="padding: 10px; margin-bottom: 8px; background-color: #f8f9fa; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <span style="font-size: 1rem; color: #495057;">{{ product.name }}</span>
+                <span style="float: right; font-weight: bold; color: #007bff;">{{ product.price }} руб.</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="/" class="nav-link" style="text-decoration: none; color: #ffffff; background-color: #28a745; padding: 10px 20px; border-radius: 5px; font-size: 1rem;">
+            Вернуться на главную
+        </a>
+    </div>
+</main>
+{% endblock %}

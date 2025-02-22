@@ -1,0 +1,42 @@
+/* Основные стили */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Светлый фон для всей страницы */
+    margin: 0;
+    padding: 0;
+}
+
+aside {
+    height: 100vh; /* Сайдбар занимает всю высоту экрана */
+}
+
+.logo {
+    width: 80px;
+    border-radius: 50%; /* Круглая форма логотипа */
+}
+
+/* Навигация */
+.nav-link {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef; /* Легкий серый цвет при наведении */
+}
+
+/* Основной контент */
+main {
+    background-color: #ffffff; /* Белый фон для основного контента */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Заголовок в сайдбаре */
+h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

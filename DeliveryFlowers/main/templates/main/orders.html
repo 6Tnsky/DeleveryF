@@ -1,0 +1,43 @@
+{% extends 'main/layoute.html' %}
+
+{% block title %}
+<title>Заказы</title>
+{% endblock %}
+
+{% block content %}
+<main style="padding: 20px; margin: 20px auto; max-width: 800px;">
+    <h4 style="text-align: center; color: #343a40;">Страница заказа</h4>
+
+    {% if user.is_authenticated %}
+        <p style="text-align: center; color: #6c757d;">Добро пожаловать, <strong>{{ user.username }}</strong>!</p>
+
+        <form method="post" action="{% url 'create_order' %}" style="margin-top: 20px;">
+            {% csrf_token %}
+            <ul style="list-style: none; padding: 0;">
+                {% for product in products %}
+                    <li style="margin-bottom: 10px; padding: 10px; border: 1px solid #dee2e6; border-radius: 5px; background-color: #f8f9fa;">
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="products" value="{{ product.id }}" style="margin-right: 10px;">
+                            <span style="font-size: 1rem; color: #495057;">{{ product.name }} - <strong>{{ product.price }} руб.</strong></span>
+                        </label>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit" class="btn btn-success" style="padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 5px;">Заказать</button>
+            </div>
+        </form>
+
+        <p style="text-align: center; margin-top: 20px;">
+            <a href="{% url 'logout' %}" style="color: #007bff; text-decoration: none;">Выйти</a>
+        </p>
+    {% else %}
+        <p style="text-align: center; font-size: 1rem; color: #6c757d;">
+            Вы не авторизованы. Пожалуйста,
+            <a href="{% url 'login' %}" style="color: #007bff; text-decoration: none;">войдите</a> или
+            <a href="{% url 'register' %}" style="color: #007bff; text-decoration: none;">зарегистрируйтесь</a>.
+        </p>
+    {% endif %}
+</main>
+{% endblock %}
